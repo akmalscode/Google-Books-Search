@@ -5,8 +5,31 @@ import './App.css';
 
 class Books extends React.Component{
 
+  state={
+    results:[],
+    query:""
+  };
+
+
+  handleQuery=(event)=>{
+    this.setState({query:event.target.value})
+  }
+
+  search=(event)=>{
+    event.preventDefault();
+  }
   render(){
-    return<div>Books</div>
+    return(
+    <div>Books
+        <form onSubmit={this.search}>
+          <input type="text" value={this.state.query} onChange={this.handleQuery}/>
+          
+          
+        </form>
+    </div>
+    
+      
+      )
   }
 
 }
@@ -34,8 +57,10 @@ function App() {
         </ul>
 
       </nav>
+    <Route path="/" exact component={Books}/>
+     <Route path="/saved-books" component={SavedBooks}  />
 
-      
+
    </Router>
   );
 }
