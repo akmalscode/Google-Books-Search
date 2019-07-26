@@ -18,7 +18,7 @@ class Books extends React.Component{
 
   search=(event)=>{
     event.preventDefault();
-    axios.get("https://www.googleapis.com/books/v1/volumes?q=${this.state.query}").then(
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.query}`).then(
       response=>{
         console.log(response.data.items);
         this.setState({results:response.data.items})
